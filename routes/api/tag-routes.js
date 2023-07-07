@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
     .then(tagData => res.json(tagData))
     .catch(err => {
       console.log(err);
-      res.status(500).json(err);
+      res.status(502).json(err);
     });
 });
 
@@ -31,10 +31,10 @@ router.get('/:id', (req, res) => {
       model: Product
     }
   })
-    .then(tagData => res.json(tagData))
+  .then(tagData => res.json(tagData))
     .catch(err => {
       console.log(err);
-      res.status(500).json(err);
+      res.status(502).json(err);
     });
 });
 
@@ -46,7 +46,7 @@ router.post('/', (req, res) => {
     .then(tagData => res.json(tagData))
     .catch(err => {
       console.log(err);
-      res.status(500).json(err);
+      res.status(502).json(err);
     });
 });
 
@@ -70,7 +70,7 @@ router.put('/:id', (req, res) => {
     })
     .catch(err => {
       console.log(err);
-      res.status(500).json(err);
+      res.status(502).json(err);
     });
 });
 
@@ -80,9 +80,9 @@ router.delete('/:id', (req, res) => {
   Tag.destroy({
     where: {
       id: req.params.id
-    }
+    },
   })
-    .then(tagData => {
+  .then(tagData => {
       if (!tagData) {
         res.status(404).json({ message: 'No existing tag located with this ID.' });
         return;
@@ -91,7 +91,7 @@ router.delete('/:id', (req, res) => {
     })
     .catch(err => {
       console.log(err);
-      res.status(500).json(err);
+      res.status(502).json(err);
     });
 });
 
